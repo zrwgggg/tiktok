@@ -245,4 +245,21 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
     
 </audio>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let audio = document.getElementById('bg-music');
+
+    function playMusic() {
+        if (audio.paused) {
+            audio.play().catch(error => console.log("Автовоспроизведение заблокировано:", error));
+        }
+        document.removeEventListener('click', playMusic); // Убираем обработчик после первого клика
+    }
+
+    document.addEventListener('click', playMusic);
+});
+</script>
+    
+</audio>
 </html>
