@@ -224,7 +224,25 @@
             }
         });
     </script>
-</body><audio id="background-audio" autoplay loop>
-    <source src="background-music.mp3" type="audio/mp3">
+</body><audio id="bg-music" loop>
+    <source src="music.mp3" type="audio/mp3">
+    Ваш браузер не поддерживает аудиоплеер.
+</audio>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    let audio = document.getElementById('bg-music');
+
+    function playMusic() {
+        if (audio.paused) {
+            audio.play().catch(error => console.log("Автовоспроизведение заблокировано:", error));
+        }
+        document.removeEventListener('click', playMusic); // Убираем обработчик после первого клика
+    }
+
+    document.addEventListener('click', playMusic);
+});
+</script>
+    
 </audio>
 </html>
